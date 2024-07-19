@@ -1,8 +1,17 @@
-## Getting Started
+## Setup crowdvolley Portal Steps
 
 1.  **Configuration**: Configure your database connection settings in the .env file.
 
 2.  **Install Dependencies**: Install the required PHP dependencies using Composer.
+
+    ```bash
+      composer update
+    ```
+    then 
+
+    ```bash
+       php artisan key:generate
+    ```
 
 3.  **Database Migrations**: Run the database migrations to create the necessary tables.
 
