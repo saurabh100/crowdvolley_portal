@@ -165,6 +165,20 @@
             border-color: #ff5b35;
             color: #fff;
         }
+
+        .sidebar .sidebar_section .sidebar-link[aria-expanded="true"] {
+            background: #000;
+            color: #fff !important;
+        }
+
+        .sidebar .sidebar_section .sidebar-link[aria-expanded="true"]::before {
+            color: #fff !important;
+            filter: brightness(20);
+        }
+
+        .sidebar .sidebar_section .sidebar-link[aria-expanded="true"] .text-info {
+            color: #fff !important;
+        }
     </style>
     <script>
         function display_ct7() {
@@ -228,19 +242,6 @@
             </div>
             {{-- footer starts from here --}}
             <footer class="bg-dark flex-grow-0  text-center text-white w-100">
-                <!-- Grid container -->
-                <div class="container p-4 pb-0">
-                    <!-- Section: Social media -->
-                    <section class="mb-4">
-                        <!-- Instagram -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/crowdvolley.it/" role="button"><i class="fab fa-instagram"></i></a>
-
-                        <!-- Linkedin -->
-                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/crowdvolley/" role="button"><i class="fab fa-linkedin-in"></i></a>
-                    </section>
-                </div>
-                <!-- Grid container -->
-
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)" ;>
                     Copyright © All Rights Reserved 2024 |
