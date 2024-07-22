@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin Routes (Accessible only by admin users)
     Route::group(['middleware' => ['auth', 'IsAdmin']], function () {
-
+        Route::get('/dashboard', [MainController::class, 'home'])->name('dashboard');
         // Employee Management
         Route::get('/Employee/addEmployee', [manageEmployeeController::class, 'addEmployee'])->name('manageEmployee.addEmployee');
         Route::post('/manageEmployee/addEmployee/store', [manageEmployeeController::class, 'store'])->name('manageEmployee.addEmployee.store');
@@ -183,7 +183,6 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::get('/notice', [FrontendHomeController::class, 'showNotice'])->name('show.notice');
     });
 
-
     // Employee route
 
     Route::group(['middleware' => ['auth', 'IsEmployee']], function () {
@@ -229,7 +228,6 @@ Route::group(['middleware' => 'auth'], function () {
         // ... Additional Employee-specific routes
     });
     Route::get('/logout', [UserController::class, 'logout'])->name('admin.logout');
-    Route::get('/dashboard', [MainController::class, 'home'])->name('dashboard');
     Route::get('/notice', [FrontendHomeController::class, 'showNotice'])->name('show.notice');
     Route::get('/notice/create', [FrontendHomeController::class, 'notice'])->name('notice.create');
     Route::post('/notice/store', [FrontendHomeController::class, 'noticeStore'])->name('notice.store');
