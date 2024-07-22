@@ -39,7 +39,7 @@
             justify-content: center;
             align-items: center; */
             position: relative;
-            background-image: url('{{ asset(' assets/image/service%203.jpg') }}');
+            background-image: url('assets/image/service%203.jpg');
             background-size: cover;
             /* background-position: center; */
         }
@@ -76,7 +76,7 @@
     </style>
 </head>
 
-<body class="bg-dark" style="background-image: url('{{ asset('assests/image/login.jpg') }}'); background-size: cover;">
+<body class="bg-dark" style="background-image: url('assets/image/login.jpg'); background-size: cover;">
     {{--
     <!-- Section: Design Block -->
     <section class="text-center">
