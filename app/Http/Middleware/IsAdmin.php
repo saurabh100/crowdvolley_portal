@@ -18,9 +18,11 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->user() && auth()->user()->role === 'Admin') {
-            return $next($request);
+            return redirect('/dashboard');
+        } else {
+            notify()->error('you are not admin');
+            return redirect()->back();
         }
-        notify()->error('you are not admin');
-        return redirect()->back();
+        return $next($request);
     }
 }
