@@ -9,69 +9,34 @@
 
         @employee
         {{-- User Profile --}}
-        <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted" href="{{ route('profile') }}"><i
-                    class="fa-regular fa-user me-2 text-info"></i>
-                <span class="sidebar-link-title fs-5">Profile</span></a>
-        </li>
+            <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted" href="{{ route('profile') }}"><i
+                        class="fa-regular fa-user me-2 text-info"></i>
+                    <span class="sidebar-link-title fs-5">Profile</span></a>
+            </li>
         @endemployee
 
-
         @admin
-        {{-- Organization --}}
-        <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted " href="#"
-                data-bs-target="#widgetsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"><i
-                    class="fa-solid fa-building me-2  text-info"></i>
-                <span class="sidebar-link-title fs-5">Organization</span></a>
-            <ul class="sidebar-menu   list-unstyled collapse " id="widgetsDropdown">
-                <li class="sidebar-list-item py-2  fs-6"><a class="sidebar-link text-muted ms-3"
-                        href="{{ route('organization.department') }}"><i
-                            class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Department</a>
-                </li>
-                <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3"
-                        href="{{ route('organization.designationList') }}"><i
-                            class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Designation</a>
-                </li>
-            </ul>
-        </li>
-
-
-        {{-- Salary Structure --}}
-        <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted"
-                href="{{ route('salary.create.form') }}"><i class="fa-solid fa-dollar-sign me-2 text-info"></i>
-                <span class="sidebar-link-title fs-5">PayGrade</span></a>
-        </li>
-
         {{-- Employees --}}
-        <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted " href="#" data-bs-target="#cmsDropdown"
-                role="button" aria-expanded="false" data-bs-toggle="collapse"><i
-                    class="fa-solid fa-user-group me-2 text-info"></i>
-                <span class="sidebar-link-title fs-5">Employees</span></a>
-            <ul class="sidebar-menu list-unstyled collapse " id="cmsDropdown">
-                <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3"
-                        href="{{ route('manageEmployee.addEmployee') }}"><i
-                            class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Add
-                        Employee</a></li>
-                <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3"
-                        href="{{ route('manageEmployee.ViewEmployee') }}"><i
-                            class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>View Employee</a></li>
-            </ul>
-        </li>
+            <li class="list-unstyled"><a class="sidebar-link text-muted " href="{{ route('manageEmployee.ViewEmployee') }}"><i
+                        class="fa-solid fa-user-group  me-2 text-info"></i>
+                    <span class="sidebar-link-title fs-5">Employees</span></a>
+            </li>
         @endadmin
 
         {{-- Attendance --}}
+        @admin
+            <li class="list-unstyled"><a class="sidebar-link text-muted " href="{{ route('attendance.viewAttendance') }}"><i
+                        class="fa-regular fa-clock  me-2 text-info"></i>
+                    <span class="sidebar-link-title fs-5">Attendance Record</span></a>
+            </li>
+        @endadmin
+        @employee
         <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted " href="" data-bs-target="#tablesDropdown"
                 role="button" aria-expanded="false" data-bs-toggle="collapse"><i
                     class="fa-regular fa-clock me-2 text-info"></i>
                 <span class="sidebar-link-title fs-5">Attendance</span></a>
             <ul class="sidebar-menu   list-unstyled collapse " id="tablesDropdown">
-                @admin
-                <li class="sidebar-list-item py-2 fs-6 "><a class="sidebar-link text-muted ms-3"
-                        href="{{ route('attendance.viewAttendance') }}"><i
-                            class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Attendance
-                        Record</a>
-                </li>
-                @endadmin
-                @employee
+
                 <li class="sidebar-list-item py-2 fs-6 "><a class="sidebar-link text-muted ms-3"
                         href="{{ route('attendance.giveAttendance') }}"><i
                             class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Give Attendance</a>
@@ -80,9 +45,10 @@
                         href="{{ route('attendance.myAttendance') }}"><i
                             class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My Attendance</a>
                 </li>
-                @endemployee
+
             </ul>
         </li>
+        @endemployee
 
 
         {{-- Task --}}
@@ -199,8 +165,29 @@
                     class="fa-solid fa-check me-2 text-info"></i>
                 <span class="sidebar-link-title fs-5">Notices</span></a>
         </li>
-
-
+        @admin
+            {{-- Organization --}}
+            <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted " href="#"
+                    data-bs-target="#widgetsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"><i
+                        class="fa-solid fa-building me-2  text-info"></i>
+                    <span class="sidebar-link-title fs-5">Catalogs</span></a>
+                <ul class="sidebar-menu   list-unstyled collapse " id="widgetsDropdown">
+                    <li class="sidebar-list-item py-1  fs-6"><a class="sidebar-link text-muted ms-3"
+                            href="{{ route('organization.department') }}"><i
+                                class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Department</a>
+                    </li>
+                    <li class="sidebar-list-item py-1 fs-6"><a class="sidebar-link text-muted ms-3"
+                            href="{{ route('organization.designationList') }}"><i
+                                class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Designation</a>
+                    </li>
+                    <li class="sidebar-list-item py-1 fs-6">
+                        <a class="sidebar-link text-muted ms-3" href="{{ route('salary.create.form') }}">
+                            <i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>PayGrade
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @endadmin
     </ul>
     @admin
     <hr>

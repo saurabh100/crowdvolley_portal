@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class UserDesignation extends Seeder
 {
@@ -14,6 +15,7 @@ class UserDesignation extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('designations')->truncate();
         DB::table('designations')->insert([
             [
@@ -29,5 +31,6 @@ class UserDesignation extends Seeder
                 'department_id' => 2,
             ],
         ]);
+        Schema::enableForeignKeyConstraints();
     }
 }
