@@ -49,7 +49,7 @@
                 opacity: 1;
                 transform: translateX(0);
                 /* Stay on-screen */
-                color: rgb(15, 75, 105)15, 15, 105);
+                color: rgb(15, 75, 105)15, 15, 105;
                 /* Change color, adjust as needed */
             }
         }
