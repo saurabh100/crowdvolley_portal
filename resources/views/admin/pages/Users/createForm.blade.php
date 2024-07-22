@@ -68,7 +68,7 @@
                                             Email</label>
                                         <input required placeholder="Enter Email" type="email" id="form11Example1"
                                             name="email" class="form-control"
-                                            value="{{ old('email') ?? ($employee ? $employee->email : '') }}" />
+                                            value="{{ old('email') }}" />
 
                                     </div>
                                     <div class="mt-2">

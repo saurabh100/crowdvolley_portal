@@ -18,7 +18,7 @@
                         <p class="text-muted mb-4">{{ $employee->location }}</p>
                         <div class="d-flex justify-content-center mb-2">
                             {{-- <button type="button" class="btn btn-primary">Follow</button> --}}
-                            <a class="btn btn-success" href="{{ route('Employee.edit', $employee->id) }}">Update
+                            <a class="btn btn-success" href="{{ route('employees.edit', $employee->id) }}">Update
                                 Profile</a>
                         </div>
                     </div>

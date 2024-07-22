@@ -6,6 +6,7 @@ use App\Models\Department;
 use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\SalaryStructure;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,6 +19,7 @@ class manageEmployeeController extends Controller
         $salaries = SalaryStructure::all();
         return view('admin.pages.manageEmployee.addEmployee', compact('departments', 'designations', 'salaries'));
     }
+
     public function store(Request $request)
     {
         // dd($request->all());

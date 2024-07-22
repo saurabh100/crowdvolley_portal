@@ -4,7 +4,7 @@
 <div class="shadow p-4 d-flex justify-content-between align-items-center ">
     <h4 class="text-uppercase">Add Employee</h4>
     <div>
-        <a href="{{ route('manageEmployee.ViewEmployee') }}" class="btn btn-success px-3 p-2 text-lg rounded-pill"><i
+        <a href="{{ route('employees.index') }}" class="btn btn-success px-3 p-2 text-lg rounded-pill"><i
                 class="fa-sharp fa-regular fa-eye me-1"></i>Employee
             List</a>
     </div>
@@ -21,7 +21,7 @@
                         <h5 class="mb-0 text-font text-uppercase">Submit Employee Details</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('manageEmployee.addEmployee.store') }}" method="post"
+                        <form action="{{ route('employees.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-4">
@@ -30,7 +30,7 @@
                                         <label class="form-label mt-2 fw-bold" for="form11Example1">Employee
                                             Name</label>
                                         <input required placeholder="Enter Name" type="text" id="form11Example1"
-                                            name="name" class="form-control" />
+                                            name="name" class="form-control" value="{{ old('name') }}"/>
                                     </div>
                                     <div class="mt-2">
                                         @error('name')
@@ -42,7 +42,7 @@
                                     <div class="form-outline">
                                         <label class="form-label mt-2 fw-bold" for="form11Example1">Employee ID</label>
                                         <input required placeholder="Enter ID" type="text" id="form11Example1"
-                                            name="employee_id" class="form-control" />
+                                            name="employee_id" class="form-control" value="{{ old('employee_id') }}"/>
                                     </div>
                                     <div class="mt-2">
                                         @error('employee_id')
@@ -75,7 +75,7 @@
                                         <label class="form-label mt-2 fw-bold" for="form11Example3">Date of
                                             Birth</label>
                                         <input required type="date" id="form11Example3" name="date_of_birth"
-                                            class="form-control" />
+                                            class="form-control" value="{{ old('date_of_birth') }}"/>
                                     </div>
                                     <div class="mt-2">
                                         @error('date_of_birth')
@@ -103,7 +103,7 @@
                                     <div class="form-outline mb-4">
                                         <label class="form-label mt-2 fw-bold" for="form11Example4">Hire Date</label>
                                         <input required placeholder="Enter date here" type="date" id="form11Example4"
-                                            name="hire_date" class="form-control" />
+                                            name="hire_date" class="form-control" value="{{ old('hire_date') }}"/>
                                     </div>
                                     <div class="mt-2">
                                         @error('hire_date')
@@ -121,7 +121,7 @@
                                         <input required placeholder="Enter Email" type="email" id="form11Example5"
                                             name="email" class="form-control"
                                             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                            title="Enter a valid email address" />
+                                            title="Enter a valid email address" value="{{ old('email') }}"/>
                                     </div>
                                     <div class="mt-2">
                                         @error('email')
@@ -134,7 +134,7 @@
                                         <label class="form-label mt-2 fw-bold" for="form11Example6">Phone</label>
                                         <input required placeholder="Phone Number" type="text" id="form11Example6"
                                             name="phone" class="form-control" pattern="^(?:\01)?\d{11}$"
-                                            title="Enter a valid Bangladeshi phone number with optional +88 or 01 preceding 11 digits" />
+                                            title="Enter a valid Bangladeshi phone number with optional +88 or 01 preceding 11 digits" value="{{ old('phone') }}"/>
                                     </div>
                                     <div class="mt-2">
                                         @error('phone')
@@ -179,7 +179,7 @@
                                         <label class="form-label mt-2 fw-bold" for="form11Example7">Location</label>
                                         <input required placeholder="Enter Location" type="text" id="form11Example6"
                                             name="location" class="form-control" pattern="[A-Za-z0-9\s]+"
-                                            title="Enter a valid location (letters, numbers, and spaces only)" />
+                                            title="Enter a valid location (letters, numbers, and spaces only)" value="{{ old('location') }}" />
                                     </div>
                                     <div class="mt-2">
                                         @error('location')

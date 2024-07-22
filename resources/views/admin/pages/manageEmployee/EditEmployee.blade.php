@@ -4,7 +4,7 @@
 <div class="shadow p-4 d-flex justify-content-between align-items-center ">
     <h4 class="text-uppercase">Edit Employee</h4>
     <div>
-        <a href="{{ route('manageEmployee.ViewEmployee') }}" class="btn btn-info p-2 text-lg rounded">Employee List</a>
+        <a href="{{ route('employees.view') }}" class="btn btn-info p-2 text-lg rounded">Employee List</a>
     </div>
 </div>
 <div class="container my-5 py-5">
@@ -19,7 +19,7 @@
                         <h5 class="mb-0 text-font text-uppercase">Update Employee Details</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('Employee.update', $employee->id) }}" method="post"
+                        <form action="{{ route('employees.update', $employee->id) }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             @method('put')

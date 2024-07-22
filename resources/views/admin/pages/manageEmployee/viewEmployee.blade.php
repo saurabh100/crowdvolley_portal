@@ -4,7 +4,7 @@
 <div class="shadow p-4 d-flex justify-content-between align-items-center ">
     <h4 class="text-uppercase">View Employee Details</h4>
     <div>
-        <a href="{{ route('manageEmployee.addEmployee') }}" class="btn btn-success p-2 text-lg rounded-pill"><i
+        <a href="{{ route('employees.create') }}" class="btn btn-success p-2 text-lg rounded-pill"><i
                 class="fa-solid fa-plus me-1"></i>Add New
             Employee</a>
     </div>
@@ -12,7 +12,7 @@
 <div class="my-5 py-3">
     <div class="d-flex justify-content-end">
         <div class="input-group rounded w-25 mb-5">
-            <form action="{{ route('employee.search') }}" method="get">
+            <form action="{{ route('employees.search') }}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." name="search">
                     <button type="submit" class="input-group-text border-0 bg-transparent" id="search-addon"
@@ -67,12 +67,12 @@
                 {{-- <td>{{ $employee->location }}</td> --}}
                 <td>
                     <a class="btn btn-warning rounded-pill fw-bold text-white"
-                        href="{{ route('Employee.profile', $employee->id) }}"><i class="fa-regular fa-eye"></i></a>
+                        href="{{ route('employees.profile', $employee->id) }}"><i class="fa-regular fa-eye"></i></a>
                     <a class="btn btn-success rounded-pill fw-bold text-white"
-                        href="{{ route('Employee.edit', $employee->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        href="{{ route('employees.edit', $employee->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a class="btn btn-danger rounded-pill fw-bold text-white" href="#" data-bs-toggle="modal"
                         data-bs-target="#deleteEmployeeModal"
-                        onclick="prepareDeleteForm('{{ route('Employee.delete', $employee->id) }}')"><i
+                        onclick="prepareDeleteForm('{{ route('employees.delete', $employee->id) }}')"><i
                             class="fa-solid fa-trash"></i></a>
                 </td>
 

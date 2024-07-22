@@ -5,7 +5,7 @@
         </div>
         {{-- Dashboard --}}
         <ul class="list-unstyled mb-5">
-            <li class="sidebar-list-item "><a class="sidebar-link text-muted active" href="{{ route('dashboard') }}">
+            <li class="sidebar-list-item"><a class="sidebar-link text-muted {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <span class="sidebar-link-title fs-5">Dashboards</span></a>
             </li>
 
@@ -47,7 +47,7 @@
                     <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('manageEmployee.ViewEmployee') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>View Employee</a></li>
                 </ul>
             </li>--}}
-            <li class="list-unstyled"><a class="sidebar-link text-muted " href="{{ route('manageEmployee.ViewEmployee') }}">
+            <li class="list-unstyled"><a class="sidebar-link text-muted {{ Request::segment(1) == 'employees' ? 'active' : '' }}" href="{{ route('employees.index') }}">
                 <i class="fa-solid fa-user-group me-2 text-info"></i>
                     <span class="sidebar-link-title fs-5">Employees</span></a>
             </li>
@@ -75,7 +75,7 @@
                 </li>
             @endemployee
 
-            <li class="list-unstyled"><a class="sidebar-link text-muted " href="{{ route('attendance.viewAttendance') }}">
+            <li class="list-unstyled"><a class="sidebar-link text-muted {{ Request::segment(1) == 'Attendance' ? 'active' : '' }}" href="{{ route('attendance.viewAttendance') }}">
                 <i class="fa-regular fa-clock me-2 text-info"></i>
                     <span class="sidebar-link-title fs-5">Attendance Records</span></a>
             </li>
@@ -88,66 +88,67 @@
         </li> --}}
 
             {{-- Manage Leave --}}
-            <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted " href="#" data-bs-target="#componentsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"><i class="fa-solid fa-person-walking-arrow-right me-2 text-info"></i>
-                    <span class="sidebar-link-title fs-5">Leave</span></a>
-                <ul class="sidebar-menu   list-unstyled collapse " id="componentsDropdown">
-                    @employee
-                    <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.leaveForm') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Apply
-                            Leave</a>
+                @admin
+                <li class="list-unstyled">
+                    <a class="sidebar-link text-muted {{ Request::segment(1) == 'allLeaveReport' ? 'active' : '' }}" href="{{ route('allLeaveReport') }}">
+                    <i class="fa-solid fa-person-walking-arrow-right me-2 text-info"></i>
+                    <span class="sidebar-link-title fs-5">Leaves</span></a>
+                </li>
+                @endadmin
+                @employee
+                    <li class="sidebar-list-item py-2 ">
+                        <a class="sidebar-link text-muted " href="#" data-bs-target="#componentsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">
+                            <i class="fa-solid fa-person-walking-arrow-right me-2 text-info"></i>
+                        <span class="sidebar-link-title fs-5">Leave</span></a>
+                        <ul class="sidebar-menu   list-unstyled collapse " id="componentsDropdown">
+                            <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.leaveForm') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Apply
+                                    Leave</a>
+                            </li>
+                            <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.myLeave') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My Leave</a>
+                            </li>
+                            <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.myLeaveBalance') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My Leave Balance</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.myLeave') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My Leave</a>
-                    </li>
-                    <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.myLeaveBalance') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My Leave Balance</a>
-                    </li>
-                    @endemployee
-
-                    @admin
-                    <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.leaveStatus') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Leave Request</a>
-                    </li>
-                    <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('leave.leaveType') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Leave Type</a>
-                    </li>
-                    @endadmin
-                </ul>
-            </li>
+                @endemployee
 
 
             {{-- Task Management --}}
+            @admin
+                <li class="list-unstyled"><a class="sidebar-link text-muted {{ Request::segment(1) == 'TaskList' ? 'active' : '' }}" href="{{ route('taskList') }}">
+                    <i class="fa-solid fa-list-check me-2 text-info"></i>
+                        <span class="sidebar-link-title fs-5">Tasks</span></a>
+                </li>
+            @endadmin
+            @employee
             <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted " href="#" data-bs-target="#pagesDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">
                     <span class="sidebar-link-title fs-5"><i class="fa-solid fa-list-check me-2 text-info"></i>Task</span></a>
                 <ul class="sidebar-menu list-unstyled collapse" id="pagesDropdown">
-                    @admin
-                    <li class="sidebar-list-item  py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('createTask') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Assign Task</a>
-                    </li>
-                    <li class="sidebar-list-item  py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('taskList') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Task List</a>
-                    </li>
-                    @endadmin
-
-                    @employee
                     <li class="sidebar-list-item  py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('myTask') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My
                             Task</a>
                     </li>
-                    @endemployee
                 </ul>
             </li>
-
+            @endemployee
             {{-- Payroll --}}
-            <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted " href="#" data-bs-target="#e-commerceDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"><i class="fa-solid fa-file-invoice-dollar me-2 text-info"></i>
+            @admin
+                <li class="list-unstyled">
+                    <a class="sidebar-link text-muted {{ Request::segment(1) == 'PayrollList' ? 'active' : '' }}" href="{{ route('view') }}">
+                        <i class="fa-solid fa-file-invoice-dollar me-2 text-info"></i>
+                        <span class="sidebar-link-title fs-5">Payroll</span></a>
+                </li>
+            @endadmin
+            @employee
+            <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted " href="#" data-bs-target="#e-commerceDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">
+                <i class="fa-solid fa-file-invoice-dollar me-2 text-info"></i>
                     <span class="sidebar-link-title fs-5">Payroll</span></a>
                 <ul class="sidebar-menu list-unstyled collapse " id="e-commerceDropdown">
-
-                    @admin
-                    <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('payroll.create') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Create Payroll</a>
-                    </li>
-                    <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('payroll.view') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Payroll List</a>
-                    </li>
-                    @endadmin
-                    @employee
                     <li class="sidebar-list-item py-2 fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('myPayroll') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>My Payroll</a>
                     </li>
-                    @endemployee
                 </ul>
             </li>
-
+            @endemployee
+            
             @admin
             {{-- Salary Structure --}}
             {{-- <li class="sidebar-list-item py-2 "><a class="sidebar-link text-muted"
@@ -168,20 +169,19 @@
             </li>
             @admin
             {{-- Organization --}}
-                <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted " href="#" data-bs-target="#widgetsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"><i class="fa-solid fa-building me-2  text-info"></i>
+                <li class="sidebar-list-item py-2"><a class="sidebar-link text-muted {{ Request::segment(1) == 'Organization' ? 'active' : '' }}" href="#" data-bs-target="#widgetsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"><i class="fa-solid fa-building me-2  text-info"></i>
                     <span class="sidebar-link-title fs-5">Catalogs</span></a>
                     <ul class="sidebar-menu   list-unstyled collapse " id="widgetsDropdown">
-                        <li class="sidebar-list-item py-2  fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('organization.department') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Department</a>
+                        <li class="sidebar-list-item py-2  fs-6">
+                            <a class="sidebar-link text-muted {{ Request::segment(2) == 'department' ? 'active' : '' }} ms-3" href="{{ route('organization.department') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Department</a>
                         </li>
-                        <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('organization.designationList') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Designation</a>
+                        <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted {{ Request::segment(2) == 'designationList' ? 'active' : '' }}  ms-3" href="{{ route('organization.designationList') }}"><i class="fa-regular fa-circle-right fa-sm me-1 text-info"></i>Designation</a>
                         </li>
-                        <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted ms-3" href="{{ route('salary.create.form') }}"><i class="fa-solid fa-dollar-sign fa-sm me-1 text-info"></i>Designation</a>
+                        <li class="sidebar-list-item fs-6"><a class="sidebar-link text-muted  {{ Request::segment(1) == 'createSalary' ? 'active' : '' }}  ms-3" href="{{ route('salary.view') }}"><i class="fa-solid fa-dollar-sign fa-sm me-1 text-info"></i>PayGrade</a>
                         </li>
                     </ul>
                 </li>
             @endadmin
-
-
         </ul>
         @admin
         <hr>
