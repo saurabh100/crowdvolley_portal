@@ -179,6 +179,10 @@
         .sidebar .sidebar_section .sidebar-link[aria-expanded="true"] .text-info {
             color: #fff !important;
         }
+
+        .d-flex {
+            flex-wrap: wrap;
+        }
     </style>
     <script>
         function display_ct7() {
