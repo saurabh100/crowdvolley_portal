@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-decoration-none" href="{{ route('manageEmployee.ViewEmployee') }}">
+                <a class="text-decoration-none" href="{{ route('employees.index') }}">
                     <div class="card-footer py-3 bg-red-light">
                         <div class="row align-items-center text-red">
                             <div class="col-10">
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-decoration-none" href="{{ route('payroll.view') }}">
+                <a class="text-decoration-none" href="{{ route('view') }}">
                     <div class="card-footer py-3 bg-green-light">
                         <div class="row align-items-center text-green">
                             <div class="col-10">

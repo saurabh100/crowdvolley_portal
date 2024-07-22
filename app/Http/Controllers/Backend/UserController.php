@@ -53,7 +53,6 @@ class UserController extends Controller
         return redirect()->route('admin.login');
     }
 
-
     public function list()
     {
         $users = User::all();
@@ -61,18 +60,10 @@ class UserController extends Controller
         return view('admin.pages.Users.list', compact('users', 'employee'));
     }
 
-
-    public function createForm($employeeId)
+    public function createForm()
     {
-        $employee = Employee::find($employeeId);
-
-        if (!$employee) {
-            return redirect()->back()->withErrors('Employee not found');
-        }
-
-        return view('admin.pages.Users.createForm', compact('employee'));
+        return view('admin.pages.Users.createForm');
     }
-
 
     public function userProfile($id)
     {
@@ -83,7 +74,6 @@ class UserController extends Controller
         $salaries = SalaryStructure::all();
         return view('admin.pages.Users.userProfile', compact('user', 'employee', 'departments', 'designations', 'salaries'));
     }
-
 
     public function store(Request $request)
     {
