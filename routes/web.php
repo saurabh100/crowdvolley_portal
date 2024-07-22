@@ -7,14 +7,14 @@ use App\Http\Controllers\Frontend\ClientController;
 use App\Http\Controllers\Frontend\homeController as FrontendHomeController;
 use App\Http\Controllers\LeaveController;
 use Illuminate\Support\Facades\Route;
-use App\Http\controllers\MainController;
-use App\Http\controllers\manageEmployeeController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\manageEmployeeController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TaskController;
-use App\Http\controllers\viewEmployeeController;
+use App\Http\Controllers\viewEmployeeController;
 
 
 /*
@@ -229,7 +229,7 @@ Route::group(['middleware' => 'auth'], function () {
         // ... Additional Employee-specific routes
     });
     Route::get('/logout', [UserController::class, 'logout'])->name('admin.logout');
-    Route::get('/dashboard', [MainController::class, 'home'])->name('dashboard');
+    Route::get('/dashboard', [MainController::class, 'index'])->name('dashboard');
     Route::get('/notice', [FrontendHomeController::class, 'showNotice'])->name('show.notice');
     Route::get('/notice/create', [FrontendHomeController::class, 'notice'])->name('notice.create');
     Route::post('/notice/store', [FrontendHomeController::class, 'noticeStore'])->name('notice.store');
