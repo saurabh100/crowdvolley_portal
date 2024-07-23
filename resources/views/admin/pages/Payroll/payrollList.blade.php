@@ -10,7 +10,7 @@
 <div class="  my-5 py-5">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div class="input-group rounded w-50">
-            <form action="{{ route('searchAllPayroll') }}" method="get">
+            <form action="{{ route('payroll.searchAllPayroll') }}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." name="search">
                     <button type="submit" class="input-group-text border-0 bg-transparent" id="search-addon">
@@ -19,7 +19,7 @@
                 </div>
             </form>
         </div>
-        <a href="{{ route('allPayrollList') }}" class="btn btn-danger text-capitalize border-0"
+        <a href="{{ route('payroll.allPayrollList') }}" class="btn btn-danger text-capitalize border-0"
             data-mdb-ripple-color="dark">Report</a>
     </div>
 
@@ -58,14 +58,14 @@
                     <td>{{ $payroll->total_payable }}</td>
                     <td>
                         <a class="btn btn-success rounded-pill"
-                            href="{{ route('singlePayroll', ['employee_id' => $payroll->employee_id, 'month' => $payroll->month]) }}">
+                            href="{{ route('payroll.singlePayroll', ['employee_id' => $payroll->employee_id, 'month' => $payroll->month]) }}">
                             Payslip
                         </a>
 
 
-                        <a class="btn btn-warning rounded-pill" href="{{ route('payrollEdit', $payroll->id) }}"><i
+                        <a class="btn btn-warning rounded-pill" href="{{ route('payroll.edit', $payroll->id) }}"><i
                                 class="fa-solid fa-pen-to-square"></i></a>
-                        <a class="btn btn-danger rounded-pill" href="{{ route('payrollDelete', $payroll->id) }}"><i
+                        <a class="btn btn-danger rounded-pill" href="{{ route('payroll.delete', $payroll->id) }}"><i
                                 class="fa-solid fa-trash"></i></a>
 
                     </td>

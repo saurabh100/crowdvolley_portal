@@ -14,7 +14,7 @@
 
     <div class="d-flex justify-content-end">
         <div class="input-group rounded w-25 mb-5">
-            <form action="{{ route('searchUser') }}" method="get">
+            <form action="{{ route('users.searchUser') }}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." name="search">
                     <button type="submit" class="input-group-text border-0 bg-transparent" id="search-addon"
@@ -49,11 +49,11 @@
                 <td>{{ $user->role }}</td>
                 <td>
                     <a class="btn btn-outline-info rounded-pill" data-mdb-ripple-color="dark"
-                        href="{{ route('users.profile.view', $user->id) }}">View</a>
+                        href="{{ route('users.view', $user->id) }}">View</a>
                     <a class="btn btn-outline-dark btn-rounded rounded-pill" data-mdb-ripple-color="dark"
-                        href="{{route('edit',$user->id)}}">Edit</a>
+                        href="{{route('users.edit',$user->id)}}">Edit</a>
                     <a class="btn btn-outline-danger btn-rounded rounded-pill" data-mdb-ripple-color="dark"
-                        href="{{route('delete',$user->id)}}">Delete</a>
+                        href="{{route('users.delete',$user->id)}}">Delete</a>
                 </td>
             </tr>
             @endforeach

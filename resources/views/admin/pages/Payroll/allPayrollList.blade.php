@@ -2,7 +2,11 @@
 
 @section('content')
 <div class="shadow p-4 d-flex justify-content-between align-items-center ">
-    <h4 class="text-uppercase">Print Payroll List</h4>
+    <h4 class="text-uppercase">Payroll List</h4><div>
+        <a href="{{ route('payroll.create') }}" class="btn btn-success p-2 text-lg rounded-pill"><i
+                class="fa-solid fa-plus me-1"></i>Add New
+            Payroll</a>
+    </div>
 </div>
 <div class="container my-5 py-5">
     <div class="float-end mb-5">

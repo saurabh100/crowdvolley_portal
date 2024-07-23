@@ -2,6 +2,12 @@
 @section('content')
 <div class="shadow p-4 d-flex justify-content-between align-items-center">
     <h4 class="text-uppercase">User Information</h4>
+    <div>
+        <a href="{{ route('users.index' ) }}"
+            class="btn btn-success p-2 text-lg rounded-pill"><i class="fa-solid fa-circle-user me-2"></i>
+                Users
+        </a>
+    </div>
 </div>
 <section class="py-5 mt-5 my-auto" style="background-color: #f4f5f7;">
     <div class="container">

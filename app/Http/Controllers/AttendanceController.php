@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
+    public function index()
+    {
+        $attendances = Attendance::paginate(10);
+        return view('admin.pages.attendance.viewAttendance', compact('attendances'));
+    }
+
+    public function create()
+    {
+        return view('admin.pages.attendance.attendance');
+    }
     public function giveAttendance()
     {
 

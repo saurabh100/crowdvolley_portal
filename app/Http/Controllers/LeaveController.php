@@ -15,19 +15,25 @@ use Illuminate\Support\Facades\Validator;
 class LeaveController extends Controller
 {
 
+    public function index()
+    {
+        $leaves = Leave::with(['type'])->paginate(5);
+        return view('admin.pages.Leave.leaveList', compact('leaves'));
+    }
+
     public function leave()
     {
         $leaves = Leave::all();
         $leaveTypes = LeaveType::all();
         return view('admin.pages.Leave.leaveForm', compact('leaves', 'leaveTypes'));
     }
-    public function leaveList()
-    {
 
-        $leaves = Leave::with(['type'])->paginate(5);
-        return view('admin.pages.Leave.leaveList', compact('leaves'));
-    }
+    // public function leaveList()
+    // {
 
+    //     $leaves = Leave::with(['type'])->paginate(5);
+    //     return view('admin.pages.Leave.leaveList', compact('leaves'));
+    // }
 
     public function myLeave()
     {

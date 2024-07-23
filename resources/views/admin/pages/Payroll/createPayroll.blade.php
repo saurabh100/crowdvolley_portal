@@ -3,7 +3,7 @@
 <div class="shadow p-4 d-flex justify-content-between align-items-center ">
     <h4 class="text-uppercase">Create Payroll</h4>
     <div>
-        <a href="{{ route('payroll.view') }}" class="btn btn-success p-2 text-lg rounded-pill"><i
+        <a href="{{ route('payroll.index') }}" class="btn btn-success p-2 text-lg rounded-pill"><i
                 class="fa-sharp fa-regular fa-eye me-1"></i>View Payroll List</a>
     </div>
 </div>

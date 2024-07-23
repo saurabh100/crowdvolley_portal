@@ -14,6 +14,35 @@ use Laravel\Sail\Console\PublishCommand;
 
 class PayrollController extends Controller
 {
+    public function index()
+    {
+        $payrolls = Payroll::with(['employee', 'salaryStructure'])->get();
+        $payrolls->each(function ($payroll) {
+            $employee = $payroll->employee;
+
+            if ($employee) {
+                $employee->load('designation', 'department'); // Assuming relationships in Employee model
+
+                if ($employee->designation) {
+                    $payroll->designation = $employee->designation->name;
+                } else {
+                    $payroll->designation = 'Unknown'; // Placeholder if designation is missing
+                }
+
+                if ($employee->department) {
+                    $payroll->department = $employee->department->name;
+                } else {
+                    $payroll->department = 'Unknown'; // Placeholder if department is missing
+                }
+            } else {
+                $payroll->designation = 'Employee not found'; // Placeholder for missing employee
+                $payroll->department = 'Employee not found'; // Placeholder for missing employee
+            }
+        });
+
+        return view('admin.pages.Payroll.payrollList', compact('payrolls'));
+    }
+
     public function createPayroll(Request $request)
     {
         $employees = Employee::all();
@@ -48,10 +77,6 @@ class PayrollController extends Controller
 
         return view('admin.pages.Payroll.createPayroll', compact('employees', 'salaryStructures'));
     }
-
-
-
-
 
     public function payrollStore(Request $request)
     {
@@ -100,7 +125,7 @@ class PayrollController extends Controller
         ]);
         notify()->success('Payroll created successfully.');
 
-        return redirect()->route('payroll.view');
+        return redirect()->route('payroll.index');
     }
 
 

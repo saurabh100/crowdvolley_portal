@@ -73,11 +73,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/profile/{id}', [viewEmployeeController::class, 'profile'])->name('profile');
             Route::get('/search', [viewEmployeeController::class, 'search'])->name('search');
         });
-        // Employee Management
 
+        Route::group(['prefix' => 'attendance', 'as' => 'attendance.'], function () {
+            Route::get('/', [AttendanceController::class, 'index'])->name('index');
+        });
 
         // attendance
-        Route::get('/viewAttendance', [AttendanceController::class, 'attendanceList'])->name('attendance.viewAttendance');
+        // Route::get('/viewAttendance', [AttendanceController::class, 'attendanceList'])->name('attendance.viewAttendance');
         Route::get('/AttendanceReport', [AttendanceController::class, 'attendanceReport'])->name('attendanceReport');
         Route::get('/searchAttendanceReport', [AttendanceController::class, 'searchAttendanceReport'])->name('searchAttendanceReport');
         Route::get('/delete/{id}', [AttendanceController::class, 'attendanceDelete'])->name('attendanceDelete');
@@ -99,8 +101,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/Designation/update/{id}', [DesignationController::class, 'update'])->name('Designation.update');
         Route::get('/Designation/Search/Designation', [DesignationController::class, 'searchDesignation'])->name('searchDesignation');
 
+        Route::group(['prefix' => 'leave', 'as' => 'leave.'], function () {
+            Route::get('/', [LeaveController::class, 'index'])->name('index');
+        });
         // Leave
-        Route::get('/Leave/LeaveStatus', [LeaveController::class, 'leaveList'])->name('leave.leaveStatus');
+        // Route::get('/Leave/LeaveStatus', [LeaveController::class, 'leaveList'])->name('leave.leaveStatus');
         Route::get('/Leave/allLeaveReport', [LeaveController::class, 'allLeaveReport'])->name('allLeaveReport');
         Route::get('/searchLeaveList', [LeaveController::class, 'searchLeaveList'])->name('searchLeaveList');
 
@@ -124,16 +129,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/Salary/update/{id}', [SalaryController::class, 'salaryUpdate'])->name('salaryUpdate');
 
         // Payroll
-        Route::get('/createPayroll', [PayrollController::class, 'createPayroll'])->name('payroll.create');
-        Route::get('/PayrollList', [PayrollController::class, 'viewPayroll'])->name('view');
-        Route::post('/store', [PayrollController::class, 'payrollStore'])->name('payroll.store');
-        Route::get('/Single/{employee_id}/{month}', [PayrollController::class, 'singlePayroll'])->name('singlePayroll');
-        Route::get('/allPayrollList', [PayrollController::class, 'allPayroll'])->name('allPayrollList');
-        Route::get('/delete/{id}', [PayrollController::class, 'deletePayroll'])->name('payrollDelete');
-        Route::get('/edit/{id}', [PayrollController::class, 'payrollEdit'])->name('payrollEdit');
-        Route::put('/update/{id}', [PayrollController::class, 'payrollUpdate'])->name('payrollUpdate');
-        Route::get('/search-AllPayroll', [PayrollController::class, 'searchAllPayroll'])->name('searchAllPayroll');
-
+        Route::group(['prefix' => 'payroll', 'as' => 'payroll.'], function () {
+            Route::get('/', [PayrollController::class, 'index'])->name('index');
+            Route::get('/create', [PayrollController::class, 'createPayroll'])->name('create');
+            Route::get('/store', [PayrollController::class, 'payrollStore'])->name('store');
+            Route::get('/edit/{id}', [PayrollController::class, 'payrollEdit'])->name('edit');
+            Route::put('/update/{id}', [PayrollController::class, 'payrollUpdate'])->name('update');
+            Route::get('/delete/{id}', [PayrollController::class, 'deletePayroll'])->name('delete');
+            Route::get('/search-AllPayroll', [PayrollController::class, 'searchAllPayroll'])->name('searchAllPayroll');
+            Route::get('/allPayrollList', [PayrollController::class, 'allPayroll'])->name('allPayrollList');
+            Route::get('/Single/{employee_id}/{month}', [PayrollController::class, 'singlePayroll'])->name('singlePayroll');
+        });
 
         // Task Management
         Route::get('/createTask', [TaskController::class, 'createTask'])->name('createTask');
@@ -146,16 +152,17 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-
         // User updated
-        Route::get('/users', [UserController::class, 'list'])->name('users.list');
-        Route::get('/users/create', [UserController::class, 'createForm'])->name('users.create');
-        Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
-        Route::get('/users/{id}', [UserController::class, 'userProfile'])->name('users.profile.view');
-        Route::get('/user/delete/{id}', [UserController::class, 'userDelete'])->name('delete');
-        Route::get('/user/edit/{id}', [UserController::class, 'userEdit'])->name('edit');
-        Route::put('/user/update/{id}', [UserController::class, 'userUpdate'])->name('update');
-        Route::get('/search-user', [UserController::class, 'searchUser'])->name('searchUser');
+        Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+            Route::get('/', [UserController::class, 'list'])->name('index');
+            Route::get('/create', [UserController::class, 'createForm'])->name('create');
+            Route::post('/store', [UserController::class, 'store'])->name('store');
+            Route::get('/{id}', [UserController::class, 'userProfile'])->name('view');
+            Route::get('/edit/{id}', [UserController::class, 'userEdit'])->name('edit');
+            Route::put('/update/{id}', [UserController::class, 'userUpdate'])->name('update');
+            Route::get('/delete/{id}', [UserController::class, 'userDelete'])->name('delete');
+            Route::get('/search-user', [UserController::class, 'searchUser'])->name('searchUser');
+        });
 
 
         // Services

@@ -17,13 +17,8 @@
 </div>
 <section class="mb-3 mb-lg-5">
     <div class="row mb-3">
-
-
         @admin
-
         {{-- Admin Only --}}
-
-
         <!-- Widget Type 1-->
         <div class="col-sm-6 col-lg-3 mb-4 ">
             <div class="card h-100">
@@ -132,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-decoration-none" href="{{ route('leave.leaveStatus') }}">
+                <a class="text-decoration-none" href="{{ route('leave.index') }}">
                     <div class="card-footer py-3 bg-warning-light">
                         <div class="row align-items-center text-warning">
                             <div class="col-10">
@@ -163,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-decoration-none" href="{{ route('users.list') }}">
+                <a class="text-decoration-none" href="{{ route('users.index') }}">
                     <div class="card-footer py-3 bg-info-light">
                         <div class="row align-items-center text-info">
                             <div class="col-10">
@@ -192,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-decoration-none" href="{{ route('view') }}">
+                <a class="text-decoration-none" href="{{ route('payroll.index') }}">
                     <div class="card-footer py-3 bg-green-light">
                         <div class="row align-items-center text-green">
                             <div class="col-10">
@@ -299,5 +294,6 @@
                 </a>
                 @endemployee
             </div>
-
-            @endsection
+        </div>
+</secion>
+@endsection

@@ -234,8 +234,8 @@
 
 
     <div class="d-flex align-items-stretch">
-        <!-- sidebar -->
         @include('admin.partials.sidebar')
+        <!-- sidebar -->
         <div class="main_dashboard">
             <!-- navbar-->
             @include('admin.partials.header')
